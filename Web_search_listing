@@ -1,0 +1,14 @@
+import webbrowser,time
+from googlesearch import search
+
+links=[]
+key = input("Enter what you want to search : ")
+for i in search(key,stop=10):
+	print(i)
+	time.sleep(1)
+	links.append(i)
+
+f=open("search_results_url.txt","a")
+for i in links :
+	f.write(i+"\n")
+f.close()
