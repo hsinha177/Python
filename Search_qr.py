@@ -3,16 +3,17 @@ from googlesearch import search
 import webbrowser,time,qrcode
 import pyzbar
 link=[]
+n=1
 key=input("Enter what you want to search : ")
 
-for i in search(key,stop=1) :
-	print(i)
+for i in search(key,stop=3) :
 	link.append(i)
-	time.sleep(1)
-	qr = qrcode.QRCode( version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=15, border=2 ) 
-	qr.add_data(link) 
+for i in link :
+	qr = qrcode.QRCode( version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=2 ) 
+	qr.add_data(i) 
 	qr.make(fit=True) 
-	img = qr.make_image(fill_color="black", back_color="white") 
-	img.save("MyQr2.png")
+	code = qr.make_image(fill_color="black", back_color="white") 
+	code.save(f"SearchResult{n}.png")
+	n=n+1
 
 
