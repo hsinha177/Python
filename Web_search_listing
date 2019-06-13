@@ -1,3 +1,6 @@
+#pgm to search a key entered by user
+#by keyboard input
+
 import webbrowser,time
 from googlesearch import search
 
