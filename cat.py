@@ -2,7 +2,7 @@
 c=int(input("Enter the command : \n 1. Cat \t2.Cat -b\t3.Cat -s\t4.Cat -E\n:")) 
 
 #OPEN the FILE 
-file=open("demofile.txt","r") 
+file=open("subh.txt","r") 
 
 #Normal Reading like cat function 
 if choice==1: 
