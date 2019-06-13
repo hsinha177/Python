@@ -1,0 +1,40 @@
+import smtplib 
+from email.mime.text import MIMEText 
+from email.mime.multipart import MIMEMultipart 
+from email.mime.base import MIMEBase 
+from email import encoders 
+
+#user info sender to receiver
+email_user = 'kgfgoel@gmail.com' 
+email_password = '0919rebel' 
+email_send = 'hsinha177@gmail.com' 
+subject = 'Email test' 
+
+#message format
+msg = MIMEMultipart() 
+msg['From'] = email_user 
+msg['To'] = email_send 
+msg['Subject'] = subject 
+body = 'Hello ! this message is sent from sid to shubh via python code' 
+
+msg.attach(MIMEText(body,'plain')) 
+#attachment of file
+
+filename='dock.txt'
+
+attachment =open(filename,'rb') 
+part = MIMEBase('application','octet-stream') 
+part.set_payload((attachment).read()) 
+encoders.encode_base64(part) 
+part.add_header('Content-Disposition',"attachment; filename= "+filename) 
+msg.attach(part)
+
+#converting msg as string type
+text=msg.as_string()
+
+#protocols to send over smtp 
+server = smtplib.SMTP('smtp.gmail.com',587) 
+server.starttls() 
+server.login(email_user,email_password) 
+server.sendmail(email_user,email_send,text) 
+server.quit()
