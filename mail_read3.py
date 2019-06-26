@@ -3,8 +3,8 @@ import imaplib
 import ctypes
 import getpass
 mail = imaplib.IMAP4_SSL('imap.gmail.com',993)
-unm = 'kgfgoel@gmail.com'
-pwd= 'siddharth2805'
+unm = 'your email'
+pwd= 'your password'
 mail.login(unm,pwd)
 mail.select('INBOX')
 def loop():
